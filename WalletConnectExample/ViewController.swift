@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var convertedUrlLabel: UILabel!
 
-    static let peraWalletConnectRoutingBase = "algorand-wc://wc?uri="
+    static let peraWalletConnectRoutingBase = "perawallet-wc://wc?uri="
 
     override func viewDidLoad() {
         super.viewDidLoad()
