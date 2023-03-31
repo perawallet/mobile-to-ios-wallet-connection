@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Connect URL:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrg-a3-7vZ">
-                                <rect key="frame" x="20" y="55" width="150" height="20"/>
+                                <rect key="frame" x="20" y="59" width="150" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="wc:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="flX-vY-mZt">
-                                <rect key="frame" x="20" y="83" width="374" height="128"/>
+                                <rect key="frame" x="20" y="87" width="374" height="128"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ilu-aa-DcB"/>
@@ -32,8 +33,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9l-s1-U5I">
-                                <rect key="frame" x="20" y="219" width="374" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9l-s1-U5I">
+                                <rect key="frame" x="20" y="223" width="374" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="onf-hW-8Yk"/>
                                 </constraints>
@@ -41,33 +42,58 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-OR-uTN">
-                                <rect key="frame" x="151.5" y="281" width="111.5" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEG-J2-E0U">
+                                <rect key="frame" x="20" y="285" width="374" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="ELH-ef-yLH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BlN-5a-Con">
+                                <rect key="frame" x="78" y="432" width="258" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Route to Pera"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Route to Pera via Universal link"/>
                                 <connections>
-                                    <action selector="didTapRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nhU-Xf-upg"/>
+                                    <action selector="didTapRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEC-Su-W9N"/>
+                                    <action selector="didTapRouteViaUniversalLink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhz-AA-g2Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-OR-uTN">
+                                <rect key="frame" x="95" y="389" width="224" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Route to Pera via Deeplink"/>
+                                <connections>
+                                    <action selector="didTapRouteViaDeeplink:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EsS-A4-Gjd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qah-OR-uTN" firstAttribute="top" secondItem="X9l-s1-U5I" secondAttribute="bottom" constant="8" symbolic="YES" id="4bL-6h-fue"/>
+                            <constraint firstItem="qah-OR-uTN" firstAttribute="top" secondItem="BEG-J2-E0U" secondAttribute="bottom" constant="50" id="4lB-K5-tdm"/>
+                            <constraint firstItem="BEG-J2-E0U" firstAttribute="top" secondItem="X9l-s1-U5I" secondAttribute="bottom" constant="8" symbolic="YES" id="6aY-jZ-r4D"/>
                             <constraint firstItem="flX-vY-mZt" firstAttribute="top" secondItem="Qrg-a3-7vZ" secondAttribute="bottom" constant="8" symbolic="YES" id="8AR-jW-KbO"/>
                             <constraint firstItem="Qrg-a3-7vZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="APO-fS-3Ga"/>
                             <constraint firstItem="Qrg-a3-7vZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="FMe-sa-CkI"/>
+                            <constraint firstItem="BlN-5a-Con" firstAttribute="top" secondItem="qah-OR-uTN" secondAttribute="bottom" constant="8" symbolic="YES" id="Fbf-0e-Rz3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="flX-vY-mZt" secondAttribute="trailing" constant="20" id="KLX-NN-gGn"/>
+                            <constraint firstItem="BEG-J2-E0U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WPH-D6-xL7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X9l-s1-U5I" secondAttribute="trailing" constant="20" id="fBS-0A-IjY"/>
                             <constraint firstItem="X9l-s1-U5I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="h88-Vx-EBG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BEG-J2-E0U" secondAttribute="trailing" constant="20" id="iRE-I3-7X4"/>
                             <constraint firstItem="flX-vY-mZt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="izz-L8-7fs"/>
                             <constraint firstItem="qah-OR-uTN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jzR-ek-QKx"/>
+                            <constraint firstItem="BlN-5a-Con" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="leU-5x-P4x"/>
                             <constraint firstItem="X9l-s1-U5I" firstAttribute="top" secondItem="flX-vY-mZt" secondAttribute="bottom" constant="8" symbolic="YES" id="wdd-Q3-fGB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="convertedUrlLabel" destination="X9l-s1-U5I" id="Lwb-LC-o5c"/>
-                        <outlet property="routeButton" destination="qah-OR-uTN" id="RPJ-I8-ZI3"/>
+                        <outlet property="convertedUniversalLinkUrlLabel" destination="BEG-J2-E0U" id="bOB-72-CbQ"/>
+                        <outlet property="convertedUrlDeeplinkUrlLabel" destination="X9l-s1-U5I" id="sm6-8F-09m"/>
+                        <outlet property="deeplinkRouteButton" destination="qah-OR-uTN" id="S8v-8F-J7v"/>
+                        <outlet property="universalLinkRouteButton" destination="BlN-5a-Con" id="6Eh-nq-qSb"/>
                         <outlet property="urlTextView" destination="flX-vY-mZt" id="Ka8-ju-4OK"/>
                     </connections>
                 </viewController>
@@ -78,7 +104,7 @@
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
