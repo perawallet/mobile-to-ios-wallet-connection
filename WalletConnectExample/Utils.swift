@@ -44,21 +44,39 @@ extension String {
         return true
     }
 
-    var peraCompatibleWalletConnectUrl: URL? {
+    var peraCompatibleWalletConnectUrlForDeeplink: URL? {
         guard hasContainWalletConnectUrl else {
             /// text doesn't contain wallet connect url
             return nil
         }
 
-        return peraCompatibleEncodedWalletConnectUrl
+        return peraCompatibleEncodedWalletConnectUrlForDeeplink
     }
 
-    private var peraCompatibleEncodedWalletConnectUrl: URL? {
+    var peraCompatibleWalletConnectUrlForUniversalLink: URL? {
+        guard hasContainWalletConnectUrl else {
+            /// text doesn't contain wallet connect url
+            return nil
+        }
+
+        return peraCompatibleEncodedWalletConnectUrlForUniversalLink
+    }
+
+    private var peraCompatibleEncodedWalletConnectUrlForDeeplink: URL? {
         guard let encodedUrlText = addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
             return nil
         }
 
-        let finalURLText = ViewController.peraWalletConnectRoutingBase + encodedUrlText
+        let finalURLText = ViewController.peraWalletConnectRoutingBaseForDeeplink + encodedUrlText
+        return URL(string: finalURLText)
+    }
+
+    private var peraCompatibleEncodedWalletConnectUrlForUniversalLink: URL? {
+        guard let encodedUrlText = addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
+            return nil
+        }
+
+        let finalURLText = ViewController.peraWalletConnectRoutingBaseForUniversalLink + encodedUrlText
         return URL(string: finalURLText)
     }
 }

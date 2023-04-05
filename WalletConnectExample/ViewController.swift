@@ -10,10 +10,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var urlTextView: UITextView!
-    @IBOutlet weak var routeButton: UIButton!
-    @IBOutlet weak var convertedUrlLabel: UILabel!
+    @IBOutlet weak var deeplinkRouteButton: UIButton!
+    @IBOutlet weak var universalLinkRouteButton: UIButton!
+    @IBOutlet weak var convertedUrlDeeplinkUrlLabel: UILabel!
+    @IBOutlet weak var convertedUniversalLinkUrlLabel: UILabel!
 
-    static let peraWalletConnectRoutingBase = "perawallet-wc://wc?uri="
+    static let peraWalletConnectRoutingBaseForDeeplink = "perawallet-wc://wc?uri="
+    static let peraWalletConnectRoutingBaseForUniversalLink = "https://perawallet.app/qr/perawallet-wc/wc?uri="
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +24,24 @@ class ViewController: UIViewController {
         urlTextView.delegate = self
         updateViews(nil)
     }
-    @IBAction func didTapRoute(_ sender: Any) {
+    @IBAction func didTapRouteViaDeeplink(_ sender: Any) {
         guard let urlText = urlTextView.text else {
             return
         }
 
-        guard let url = urlText.peraCompatibleWalletConnectUrl else {
+        guard let url = urlText.peraCompatibleWalletConnectUrlForDeeplink else {
+            return
+        }
+
+        UIApplication.shared.open(url)
+    }
+
+    @IBAction func didTapRouteViaUniversalLink(_ sender: Any) {
+        guard let urlText = urlTextView.text else {
+            return
+        }
+
+        guard let url = urlText.peraCompatibleWalletConnectUrlForUniversalLink else {
             return
         }
 
@@ -45,25 +60,32 @@ extension ViewController: UITextViewDelegate {
 /// <mark>: UI Updates
 extension ViewController {
     private func updateViews(_ text: String?) {
-        updateConvertedUrl(text)
-        setRouteButtonEnabled(text)
+        updateConvertedUrlForDeeplink(text)
+        updateConvertedUrlForUniversalLink(text)
+        setRouteButtonsEnabled(text)
     }
 
-    private func updateConvertedUrl(_ text: String?) {
-        guard let text = text, let url = text.peraCompatibleWalletConnectUrl else {
-            convertedUrlLabel.text = "Invalid URL"
+    private func updateConvertedUrlForDeeplink(_ text: String?) {
+        guard let text = text, let url = text.peraCompatibleWalletConnectUrlForDeeplink else {
+            convertedUrlDeeplinkUrlLabel.text = "Invalid URL"
             return
         }
 
-        convertedUrlLabel.text = url.absoluteString
+        convertedUrlDeeplinkUrlLabel.text = url.absoluteString
     }
 
-    private func setRouteButtonEnabled(_ text: String?) {
-        guard let text = text else {
-            routeButton.isEnabled = false
+    private func updateConvertedUrlForUniversalLink(_ text: String?) {
+        guard let text = text, let url = text.peraCompatibleWalletConnectUrlForUniversalLink else {
+            convertedUniversalLinkUrlLabel.text = "Invalid URL"
             return
         }
 
-        routeButton.isEnabled = text.hasContainWalletConnectUrl
+        convertedUniversalLinkUrlLabel.text = url.absoluteString
+    }
+
+    private func setRouteButtonsEnabled(_ text: String?) {
+        let buttonsEnabled = text?.hasContainWalletConnectUrl ?? false
+        deeplinkRouteButton.isEnabled = buttonsEnabled
+        universalLinkRouteButton.isEnabled = buttonsEnabled
     }
 }
